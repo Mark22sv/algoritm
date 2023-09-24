@@ -43,7 +43,7 @@ export const StringComponent: React.FC = () => {
             text="Развернуть"
             type="submit"
             isLoader={loading}
-            disabled={loading || !string}
+            disabled={string.length <= 1 ? true : false}
           ></Button>
         </form>
         <ul className={styles.circles}>

@@ -18,10 +18,10 @@ export const ListPage: React.FC = () => {
   }>({ value: "", index: "" });
   const [linkedList] = useState(
     new LinkedList<IElementList>([
-      { value: 12, state: ElementStates.Default },
-      { value: 22, state: ElementStates.Default },
-      { value: 43, state: ElementStates.Default },
-      { value: 32, state: ElementStates.Default },
+      { value: "13", state: ElementStates.Default },
+      { value: "21", state: ElementStates.Default },
+      { value: "45", state: ElementStates.Default },
+      { value: "32", state: ElementStates.Default },
     ])
   );
   const [listArr, setListArr] = useState<Array<INode<IElementList>>>(
@@ -78,6 +78,7 @@ export const ListPage: React.FC = () => {
     setInputValue({ value: "", index: "" });
     setIsLoader({ loader: false, button: "" });
   };
+
   const onDeleteHeadButtonClick = async () => {
     setIsLoader({ loader: true, button: "deleteHead" });
     setNode({ ...node, delete: true, value: linkedList.findByIndex(0).value });
@@ -89,6 +90,7 @@ export const ListPage: React.FC = () => {
     setNode({ ...node, delete: false });
     setIsLoader({ loader: false, button: "" });
   };
+
   const onDeleteTailButtonClick = async () => {
     setIsLoader({ loader: true, button: "deleteTail" });
     setNode({
@@ -104,6 +106,7 @@ export const ListPage: React.FC = () => {
     setNode({ ...node, delete: false });
     setIsLoader({ loader: false, button: "" });
   };
+
   const onAddByIndexButtonClick = async () => {
     setIsLoader({ loader: true, button: "addByIndex" });
     setNode({ ...node, addNode: true });
@@ -129,15 +132,24 @@ export const ListPage: React.FC = () => {
     setInputValue({ value: "", index: "" });
     setIsLoader({ loader: false, button: "" });
   };
+
   const onDeleteByIndexButtonClick = async () => {
     setIsLoader({ loader: true, button: "deleteByIndex" });
+    let delValue;
     for (let i = 0; i <= +inputValue.index; i++) {
       if (i < +inputValue.index) {
-        linkedList.findByIndex(i).state = ElementStates.Changing;
+        linkedList.findByIndex(i).color = ElementStates.Changing;
+      }
+      if (i === +inputValue.index) {
+        delValue = linkedList.findByIndex(i).value;
+        linkedList.findByIndex(i).value = "";
+        linkedList.findByIndex(i).color = ElementStates.Changing;
       }
       setListArr(linkedList.toArray());
       await setDelay(SHORT_DELAY_IN_MS);
     }
+    linkedList.findByIndex(+inputValue.index).value = delValue;
+    setListArr(linkedList.toArray());
     setNode({
       ...node,
       delete: true,
@@ -150,9 +162,10 @@ export const ListPage: React.FC = () => {
     setNode({ ...node, delete: false });
     linkedList.deleteByIndex(+inputValue.index);
     setListArr(linkedList.toArray());
-    linkedList
-      .toArray()
-      .forEach((item) => (item.value.state = ElementStates.Default));
+    linkedList.toArray().forEach((item) => {
+      item.value.state = ElementStates.Default;
+      item.value.color = ElementStates.Default;
+    });
     setListArr(linkedList.toArray());
     setInputValue({ value: "", index: "" });
     setIsLoader({ loader: false, button: "" });
@@ -228,7 +241,7 @@ export const ListPage: React.FC = () => {
       </div>
       <ul className={styles.letters}>
         {listArr ? (
-          listArr.map((item: any, index: number) => (
+          listArr.map((item, index) => (
             <li className={styles.list} key={index}>
               {node.addNode &&
                 linkedList.getLength() - elementIndex === index && (

@@ -21,6 +21,7 @@ export interface ILinkedList<T> {
 }
 
 export interface IElementList  {
-    value: string | number;
-    state: ElementStates
+    value: string;
+    state: ElementStates;
+    color?: ElementStates;
 }
