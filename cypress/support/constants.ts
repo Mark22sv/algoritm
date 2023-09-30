@@ -1,0 +1,18 @@
+export const MAIN_PAGE: 'http://localhost:3000' = 'http://localhost:3000';
+export const STRING_PAGE: 'http://localhost:3000/recursion' = 'http://localhost:3000/recursion';
+export const FIBONACCI_PAGE: 'http://localhost:3000/fibonacci' = 'http://localhost:3000/fibonacci';
+export const SORTING_PAGE: 'http://localhost:3000/sorting' = 'http://localhost:3000/sorting';
+export const STACK_PAGE: 'http://localhost:3000/stack' = 'http://localhost:3000/stack';
+export const QUEUE_PAGE: 'http://localhost:3000/queue' = 'http://localhost:3000/queue';
+export const LIST_PAGE: 'http://localhost:3000/list' = 'http://localhost:3000/list';
+export const BUTTON: "button" = "button";
+export const INPUT: 'input' = 'input';
+export const CIRCLE: '[class*=circle_circle]' = '[class*=circle_circle]';
+export const SMALL_CIRCLE: "[class*=circle_changing]" = "[class*=circle_changing]";
+export const CIRCLE_HEAD: '[data-testid=head]' = '[data-testid=head]';
+export const CIRCLE_TAIL: '[data-testid=tail]' = '[data-testid=tail]';
+export const COLOR_DEFAULT: '4px solid rgb(0, 50, 255)' = '4px solid rgb(0, 50, 255)';
+export const COLOR_CHANGING: '4px solid rgb(210, 82, 225)' = '4px solid rgb(210, 82, 225)';
+export const COLOR_MODIFIED: '4px solid rgb(127, 224, 81)' = '4px solid rgb(127, 224, 81)';
+export const DELAY_IN_MS: number = 1000;
+export const SHORT_DELAY_IN_MS: number = 500;
