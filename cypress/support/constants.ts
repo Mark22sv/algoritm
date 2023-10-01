@@ -8,9 +8,10 @@ export const LIST_PAGE: 'http://localhost:3000/list' = 'http://localhost:3000/li
 export const BUTTON: "button" = "button";
 export const INPUT: 'input' = 'input';
 export const CIRCLE: '[class*=circle_circle]' = '[class*=circle_circle]';
-export const SMALL_CIRCLE: "[class*=circle_changing]" = "[class*=circle_changing]";
-export const CIRCLE_HEAD: '[data-testid=head]' = '[data-testid=head]';
-export const CIRCLE_TAIL: '[data-testid=tail]' = '[data-testid=tail]';
+export const SMALL_CIRCLE: "[class*=circle_letter]" = "[class*=circle_letter]";
+export const CIRCLE_INDEX: '[class*=circle_index]' = '[class*=circle_index]';
+export const CIRCLE_HEAD: '[class*=circle_head]' = '[class*=circle_head]';
+export const CIRCLE_TAIL: '[class*=circle_string]' = '[class*=circle_string]';
 export const COLOR_DEFAULT: '4px solid rgb(0, 50, 255)' = '4px solid rgb(0, 50, 255)';
 export const COLOR_CHANGING: '4px solid rgb(210, 82, 225)' = '4px solid rgb(210, 82, 225)';
 export const COLOR_MODIFIED: '4px solid rgb(127, 224, 81)' = '4px solid rgb(127, 224, 81)';

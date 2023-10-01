@@ -1,7 +1,7 @@
 import { BUTTON, INPUT, CIRCLE, STRING_PAGE, COLOR_DEFAULT, COLOR_CHANGING, COLOR_MODIFIED, DELAY_IN_MS } from "../support/constants"
 
 describe('Строка', () => {
-  beforeEach(() =>{
+  beforeEach(() => {
     cy.visit(STRING_PAGE);
   });
 
@@ -11,8 +11,6 @@ describe('Строка', () => {
   });
 
   it('Строка разворачивается корректно. На каждом шаге анимации проверки на корректность выполненной операции и корректность стилей', () => {
-    cy.clock();
-
     cy.get(INPUT).type('test');
     cy.get(CIRCLE).eq(0).should("have.css", "border", COLOR_DEFAULT);
     cy.get(CIRCLE).eq(1).should("have.css", "border", COLOR_DEFAULT);
@@ -25,14 +23,14 @@ describe('Строка', () => {
     cy.get(CIRCLE).eq(2).should("have.css", "border", COLOR_DEFAULT).contains('s');
     cy.get(CIRCLE).eq(3).should("have.css", "border", COLOR_CHANGING).contains('t');
 
-    cy.tick(DELAY_IN_MS);
+    cy.wait(DELAY_IN_MS);
 
     cy.get(CIRCLE).eq(0).should("have.css", "border", COLOR_MODIFIED).contains('t');
     cy.get(CIRCLE).eq(1).should("have.css", "border", COLOR_CHANGING).contains('e');
     cy.get(CIRCLE).eq(2).should("have.css", "border", COLOR_CHANGING).contains('s');
     cy.get(CIRCLE).eq(3).should("have.css", "border", COLOR_MODIFIED).contains('t');
 
-    cy.tick(DELAY_IN_MS);
+    cy.wait(DELAY_IN_MS);
 
     cy.get(CIRCLE).eq(0).should("have.css", "border", COLOR_MODIFIED).contains('t');
     cy.get(CIRCLE).eq(1).should("have.css", "border", COLOR_MODIFIED).contains('s');
